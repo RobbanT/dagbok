@@ -60,14 +60,14 @@ article input {
 }
 
 h2 {
+    display: inline;
     margin: 0;
     padding: 0;
-    margin-bottom: 25px;
-    text-align: center;
-    font: bolder 32px Arial;
+    font: bold 30px Arial;
+    color: #333333;
 }
 
-button {
+#new-button {
     background-color: #3438f5;
     height: 40px;
     width: 100%;
@@ -77,9 +77,10 @@ button {
     font-size: large;
     font-weight: bold;
     border-style: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-button:hover {
+#new-button:hover {
     cursor: pointer;
     background-color: #0105bb;
 }
@@ -95,6 +96,75 @@ li {
     font: bold 15px Arial;
     list-style-type: none;
     padding: 10px 10px 10px 35px;
-    margin: 5px 0;
+    margin: 20px 0;
     border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.date-picker {
+    background: #ffffff url(calendar.png) 93% 50% no-repeat;
+    color: black;
+    opacity: 1;
+    display: inline;
+    float: right;
+    margin-left: 10px;
+    padding: 7px;
+    border: 1px solid #606062;
+    border-radius: 5px;
+    width: 123px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.date-picker:hover {
+    border-color: #3438f5;
+    cursor: pointer;
+}
+
+.save-button {
+    background-color: #3438f5;
+    height: 20px;
+    width: 50%;
+    display: left;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    color: white;
+    font-size: smaller;
+    font-weight: bold;
+    border-style: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.save-button:hover {
+    cursor: pointer;
+    background-color: #0105bb;
+}
+
+.remove-button {
+    background-color: #c32b57;
+    height: 20px;
+    width: 50%;
+    float: right;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    color: white;
+    font-size: smaller;
+    font-weight: bold;
+    border-style: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.remove-button:hover {
+    cursor: pointer;
+    background-color: #951f42;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+
+.date-title {
+    margin: 0;
+    float: right;
 }
