@@ -1,0 +1,100 @@
+body {
+    background-color: #f6f6f6;
+    margin: 0;
+}
+
+header {
+    background-color: #1a1a1d;
+    padding: 1px 25px 0 25px;
+    border-bottom: 3px solid #3438f5;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+header img {
+    float: left;
+    width: 35px;
+    height: 35px;
+    padding: 23px 10px 0 0;
+}
+
+h1 {
+    font: lighter 32px Futura;
+    color: white;
+    display: inline-block;
+}
+
+#dateClock {
+    font: lighter 22px Futura;
+    color: white;
+    float: right;
+    margin-top: 8px;
+    padding: 7px;
+    width: auto;
+    white-space: pre-wrap;
+}
+
+main {
+    display: flex;
+    padding: 25px 0;
+    height: 75vh;
+    justify-content: center;
+    align-items: center;
+}
+
+div {
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #606062;
+    border-radius: 5px;
+    margin: auto;
+    width: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+article input {
+    background-color: red;
+    width: 100%;
+    height: 750px;
+    word-wrap: break-word;
+    padding: 0;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 25px;
+    text-align: center;
+    font: bolder 32px Arial;
+}
+
+button {
+    background-color: #3438f5;
+    height: 40px;
+    width: 100%;
+    color: white;
+    border-radius: 30px;
+    margin-top: 5px;
+    font-size: large;
+    font-weight: bold;
+    border-style: none;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #0105bb;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+li {
+    background-color: #f6f6f6;
+    word-wrap: break-word;
+    color: #606062;
+    font: bold 15px Arial;
+    list-style-type: none;
+    padding: 10px 10px 10px 35px;
+    margin: 5px 0;
+    border-radius: 5px;
+}
