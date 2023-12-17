@@ -52,14 +52,6 @@ main {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
-article input {
-    background-color: red;
-    width: 100%;
-    height: 750px;
-    word-wrap: break-word;
-    padding: 0;
-}
-
 h2 {
     display: inline;
     margin: 0;
@@ -68,7 +60,7 @@ h2 {
     color: #333333;
 }
 
-#new-button {
+#new-note-button {
     background-color: #3438f5;
     height: 40px;
     width: 100%;
@@ -81,7 +73,7 @@ h2 {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 }
 
-#new-button:hover {
+#new-note-button:hover {
     cursor: pointer;
     background-color: #0105bb;
 }
@@ -193,4 +185,103 @@ h3 {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #e7e7e7;
+}
+
+#new-note-window {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#new-note-window-inner {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 25px;
+    border: 1px solid #888;
+    width: 50%;
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #606062;
+    border-radius: 5px;
+}
+
+#close-button {
+    background-color: red;
+    margin: 0;
+    padding: 0 7px;
+    border-radius: 35px;
+    color: #ffffff;
+    float: right;
+    font: lighter 16px Arial;
+    border-style: none;
+}
+
+#close-button:hover {
+    background-color: rgb(154, 2, 2);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#create-note-button {
+    background-color: #3438f5;
+    height: 40px;
+    width: 100%;
+    color: white;
+    border-radius: 30px;
+    margin-top: 5px;
+    font-size: large;
+    font-weight: bold;
+    border-style: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+#new-note-div {
+    background-color: #f6f6f6;
+    word-wrap: break-word;
+    color: #606062;
+    font: bold 15px Arial;
+    list-style-type: none;
+    padding: 10px 10px 10px 35px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+#create-note-button:hover {
+    cursor: pointer;
+    background-color: #0105bb;
+}
+
+#new-note-title {
+    background: #ffffff;
+    color: black;
+    opacity: 1;
+    display: inline;
+    float: left;
+    margin-left: 10px;
+    padding: 9px;
+    border: 1px solid #606062;
+    border-radius: 5px;
+    width: 123px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#new-note-text {
+    background: #ffffff;
+    color: black;
+    opacity: 1;
+    display: block;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #606062;
+    border-radius: 5px;
+    width: 100%;
+    height: 300px;
+    margin-top: 50px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }

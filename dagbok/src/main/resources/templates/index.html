@@ -25,11 +25,24 @@
                         <span th:text="${note.date}" class="date-title"></span>
                         <p th:text="${note.text}"></p>
                         <button class="save-button">Spara</button>
-                        <button class="remove-button">Ta bort</button>
+                        <button class="remove-button"><a th:href="@{delete(id=${note.id})}">Ta bort</a></button>
                     </li>
                 </ul>
-                <button id="new-button">Nytt inlägg</button>
+                <button id="new-note-button">Nytt inlägg</button>
             </div>
         </main>
+        <div id="new-note-window">
+            <div id="new-note-window-inner">
+                <button id="close-button">x</button>
+                <form method="post" th:action="@{/new-note}">
+                    <div id="new-note-div">
+                        <input id="new-note-title" name="title" type="text" placeholder="Ange titel..." />
+                        <input class="date-picker" name="date" type="date" />
+                        <textarea id="new-note-text" name="text" placeholder="Ange text..."></textarea>
+                    </div>
+                    <button id="create-note-button">Skapa inlägg</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

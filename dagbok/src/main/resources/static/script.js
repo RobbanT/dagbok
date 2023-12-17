@@ -54,10 +54,58 @@ datePickerMax.addEventListener("input", (e) => {
     }, 250);
 });
 
+// Kod för att göra inlägg osynliga om ilägget inte finns inom angivet datum-intervall.
 let dateTitles = document.getElementsByClassName("date-title");
 for (let i = 0; i < dateTitles.length; i++) {
     if (dateTitles.item(i).innerHTML < localStorage.getItem("datePickerMin") || dateTitles.item(i).innerHTML > localStorage.getItem("datePickerMax")) {
         dateTitles.item(i).parentElement.setAttribute("hidden", "true");
-    } else {
     }
 }
+
+let hiddenNotes = Array.from(dateTitles, (d) => {
+    return d.parentElement.getAttribute("hidden");
+});
+if (dateTitles.length == 0) {
+    let parent = document.getElementsByTagName("ul");
+    parent.item(0).append((document.createElement("h4").innerHTML = "Inga inlägg existerar. Testa att lägga till ett inlägg. :)"));
+    parent.item(0).style.font = "bold 22px Arial";
+    parent.item(0).style.color = "#333333";
+    parent.item(0).style.justifyContent = "center";
+    parent.item(0).style.alignItems = "center";
+    parent.item(0).style.display = "flex";
+} else if (
+    hiddenNotes.every((d) => {
+        return d;
+    })
+) {
+    let parent = document.getElementsByTagName("ul");
+    parent.item(0).append((document.createElement("h4").innerHTML = "Alla inlägg är dolda. Testa ett annat datum-intervall. :)"));
+    parent.item(0).style.font = "bold 22px Arial";
+    parent.item(0).style.color = "#333333";
+    parent.item(0).style.justifyContent = "center";
+    parent.item(0).style.alignItems = "center";
+    parent.item(0).style.display = "flex";
+}
+
+let newNoteButton = document.getElementById("new-note-button");
+let newNoteWindow = document.getElementById("new-note-window");
+
+// Get the <span> element that closes the modal
+let closeButton = document.getElementById("close-button");
+
+// When the user clicks on the button, open the modal
+newNoteButton.onclick = function () {
+    newNoteWindow.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+closeButton.onclick = function () {
+    newNoteWindow.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == newNoteWindow) {
+        newNoteWindow.style.display = "none";
+    }
+};
