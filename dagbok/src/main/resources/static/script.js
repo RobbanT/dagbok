@@ -1,14 +1,38 @@
-document.getElementById("dateClock").innerHTML = new Date().toLocaleDateString() + "<br/> " + new Date().toLocaleTimeString();
-let datePickers = document.getElementsByClassName("date-picker");
-datePickers.item(0).setAttribute("value", new Date().toLocaleDateString());
+let dateClock = document.getElementById("date-clock");
+dateClock.innerHTML = new Date().toLocaleDateString() + "<br/> " + new Date().toLocaleTimeString();
 setInterval(() => {
     dateClock.innerHTML = new Date().toLocaleDateString() + "<br/> " + new Date().toLocaleTimeString();
 }, 1000);
 
-datePickers.item(0).addEventListener("input", () => {
-    datePickers.item(0).style.color = "black";
+let datePickerMin = document.getElementById("date-picker-min");
+if (localStorage.getItem("datePickerMin") === null) {
+    localStorage.setItem("datePickerMin", "2023-01-01");
+} else {
+    datePickerMin.value = localStorage.getItem("datePickerMin");
+}
+datePickerMin.setAttribute("value", localStorage.getItem(datePickerMin));
+
+let datePickerMax = document.getElementById("date-picker-max");
+if (localStorage.getItem("datePickerMax") === null) {
+    localStorage.setItem("datePickerMax", new Date().toLocaleDateString());
+} else {
+    datePickerMax.value = localStorage.getItem("datePickerMax");
+}
+datePickerMax.setAttribute("value", localStorage.getItem(datePickerMax));
+
+datePickerMin.addEventListener("input", () => {
+    localStorage.setItem("datePickerMin", datePickerMin.value);
 });
 
-datePickers.item(1).addEventListener("input", () => {
-    datePickers.item(1).style.color = "black";
+datePickerMax.addEventListener("input", () => {
+    localStorage.setItem("datePickerMax", datePickerMax.value);
 });
+
+let dateTitles = document.getElementsByClassName("date-title");
+
+for (let i = 0; i < dateTitles.length; i++) {
+    if (dateTitles.item(i).innerHTML < localStorage.getItem("datePickerMin")) {
+        dateTitles.item(i).parentElement.setAttribute("hidden", "true");
+    } else {
+    }
+}

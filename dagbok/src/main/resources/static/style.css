@@ -23,7 +23,7 @@ h1 {
     display: inline-block;
 }
 
-#dateClock {
+#date-clock {
     font: lighter 22px Futura;
     color: white;
     float: right;
@@ -36,12 +36,13 @@ h1 {
 main {
     display: flex;
     padding: 25px 0;
+    margin-right: 10px;
     height: 75vh;
     justify-content: center;
     align-items: center;
 }
 
-div {
+#note-container {
     background-color: white;
     padding: 25px;
     border: 1px solid #606062;
@@ -86,7 +87,10 @@ h2 {
 }
 
 ul {
+    overflow-y: auto;
     padding-left: 0px;
+    padding-right: 5px;
+    height: 75vh;
 }
 
 li {
@@ -140,7 +144,7 @@ li {
 }
 
 .remove-button {
-    background-color: #c32b57;
+    background-color: #ed141b;
     height: 20px;
     width: 50%;
     float: right;
@@ -155,7 +159,7 @@ li {
 
 .remove-button:hover {
     cursor: pointer;
-    background-color: #951f42;
+    background-color: #b92424;
 }
 
 h3 {
@@ -167,4 +171,26 @@ h3 {
 .date-title {
     margin: 0;
     float: right;
+}
+
+::-webkit-scrollbar {
+    cursor: auto;
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    margin-top: 19px;
+    margin-bottom: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f6f6f6;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    border: rgba(0, 0, 0, 0.1) solid 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #e7e7e7;
 }

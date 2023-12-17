@@ -12,78 +12,23 @@
         <header>
             <img src="diary-icon.png" alt="ikon" />
             <h1>Dagbok</h1>
-            <span id="dateClock"></span>
+            <span id="date-clock"></span>
         </header>
         <main>
-            <div>
+            <div id="note-container">
                 <h2>Inlägg</h2>
-                <input class="date-picker" type="date" min="2023-01-01" />
-                <input class="date-picker" type="date" min="2023-01-01" value="2023-01-01" />
+                <input id="date-picker-max" class="date-picker" type="date" min="2023-01-01" />
+                <input id="date-picker-min" class="date-picker" type="date" min="2023-01-01" value="2023-01-01" />
                 <ul>
-                    <li>
-                        <h3>Haaaaaaaaallåååååå</h3>
-                        <p class="date-title">2023-09-10</p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                        </p>
-                        <button class="save-button">Spara</button>
-                        <button class="remove-button">Ta bort</button>
-                    </li>
-                    <li>
-                        <h3>Vad händer?</h3>
-                                                <p class="date-title">2023-10-10</p>
-                        <p>
-                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                        </p>
-                        <button class="save-button">Spara</button>
-                        <button class="remove-button">Ta bort</button>
-                    </li>
-                    <li>
-                        <h3>Hej på dig.</h3>
-                                                <p class="date-title">2023-11-10</p>
-                        <p>
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?s
-                        </p>
-                        <button class="save-button">Spara</button>
-                        <button class="remove-button">Ta bort</button>
-                    </li>
-                    <li>
-                        <h3>Nej!</h3>
-                                                <p class="date-title">2023-12-10</p>
-                        <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?s
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae vero quis rem alias, eaque dicta aliquid ipsam rerum quod a nesciunt nobis sed! Illo ad mollitia ea in
-                            quisquam quaerat?s
-                        </p>
+                    <li th:each="note : ${notes}">
+                        <h3 th:text="${note.title}"></h3>
+                        <span th:text="${note.date}" class="date-title"></span>
+                        <p th:text="${note.text}"></p>
                         <button class="save-button">Spara</button>
                         <button class="remove-button">Ta bort</button>
                     </li>
                 </ul>
-                <button id="new-button">Nytt inlägg</.button>
+                <button id="new-button">Nytt inlägg</button>
             </div>
         </main>
     </body>
