@@ -24,7 +24,7 @@
                         <h3 th:text="${note.title}"></h3>
                         <span th:text="${note.date}" class="date-title"></span>
                         <p th:text="${note.text}"></p>
-                        <button class="save-button">Spara</button>
+                        <button class="save-button"><a>Spara</a></button>
                         <button class="remove-button"><a th:href="@{delete(id=${note.id})}">Ta bort</a></button>
                     </li>
                 </ul>

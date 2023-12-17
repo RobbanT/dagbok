@@ -1,15 +1,10 @@
 package com.dagbok.dagbok;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class NoteController {
@@ -43,9 +38,10 @@ public class NoteController {
         return "redirect:/";
     }
 
-    @PostMapping("/update-note")
+    @GetMapping("/update-note")
     public String updateNote(@RequestParam("title") String title, @RequestParam("date") String date,
-            @RequestParam("text") String text) {
-        return "redirect/";
+            @RequestParam("text") String text, @RequestParam("id") int id) {
+        noteRepository.updateNote(title, date, text, id);
+        return "redirect:/";
     }
 }
