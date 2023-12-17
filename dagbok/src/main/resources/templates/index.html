@@ -17,8 +17,8 @@
         <main>
             <div id="note-container">
                 <h2>Inlägg</h2>
-                <input id="date-picker-max" class="date-picker" type="date" min="2023-01-01" />
-                <input id="date-picker-min" class="date-picker" type="date" min="2023-01-01" value="2023-01-01" />
+                <input id="date-picker-max" class="date-picker" type="date" />
+                <input id="date-picker-min" class="date-picker" type="date" />
                 <ul>
                     <li th:each="note : ${notes}">
                         <h3 th:text="${note.title}"></h3>
