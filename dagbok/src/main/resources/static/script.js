@@ -1,28 +1,16 @@
 // Kod för datum och klocka uppe i höger hörn.
 let dateClock = document.getElementById("date-clock");
 dateClock.innerHTML = new Date().toLocaleDateString() + "<br/> " + new Date().toLocaleTimeString();
-
 setInterval(() => {
     dateClock.innerHTML = new Date().toLocaleDateString() + "<br/> " + new Date().toLocaleTimeString();
 }, 1000);
 
 // Kod för minsta datum.
 let datePickerMin = document.getElementById("date-picker-min");
-datePickerMin.setAttribute("min", "2023-01-01");
-
-if (localStorage.getItem("datePickerMin") === null) {
-    localStorage.setItem("datePickerMin", datePickerMin.getAttribute("min"));
-} else {
-    datePickerMin.value = localStorage.getItem("datePickerMin");
-}
-
-datePickerMin.setAttribute("value", localStorage.getItem("datePickerMin"));
+datePickerMin.value = localStorage.getItem("datePickerMin") === null ? datePickerMin.getAttribute("min") : localStorage.getItem("datePickerMin");
 datePickerMin.addEventListener("input", (e) => {
-    if (e.target.value >= datePickerMax.value) {
-        let maxDate = new Date(datePickerMax.value);
-        let dayBeforeMax = new Date();
-        dayBeforeMax.setDate(maxDate.getDate() - 1);
-        e.target.value = dayBeforeMax.toLocaleDateString();
+    if (e.target.value > datePickerMax.value) {
+        e.target.value = datePickerMax.value;
     }
     localStorage.setItem("datePickerMin", e.target.value);
     setTimeout(() => {
@@ -30,23 +18,12 @@ datePickerMin.addEventListener("input", (e) => {
     }, 250);
 });
 
-// Kod för högsta datum.
+// Kod för största datum.
 let datePickerMax = document.getElementById("date-picker-max");
-datePickerMax.setAttribute("max", new Date().toLocaleDateString());
-
-if (localStorage.getItem("datePickerMax") === null) {
-    localStorage.setItem("datePickerMax", datePickerMax.getAttribute("max"));
-} else {
-    datePickerMax.value = localStorage.getItem("datePickerMax");
-}
-
-datePickerMax.setAttribute("value", localStorage.getItem(datePickerMax));
+datePickerMax.value = localStorage.getItem("datePickerMax") === null ? new Date().toLocaleDateString() : localStorage.getItem("datePickerMax");
 datePickerMax.addEventListener("input", (e) => {
-    if (e.target.value <= datePickerMin.value) {
-        let minDate = new Date(datePickerMin.value);
-        let dayAfterMin = new Date();
-        dayAfterMin.setDate(minDate.getDate() + 1);
-        e.target.value = dayAfterMin.toLocaleDateString();
+    if (e.target.value < datePickerMin.value) {
+        e.target.value = datePickerMin.value;
     }
     localStorage.setItem("datePickerMax", e.target.value);
     setTimeout(() => {
@@ -54,39 +31,30 @@ datePickerMax.addEventListener("input", (e) => {
     }, 250);
 });
 
-// Kod för att göra inlägg osynliga om ilägget inte finns inom angivet datum-intervall.
-let dateTitles = document.getElementsByClassName("date-title");
-for (let i = 0; i < dateTitles.length; i++) {
-    if (dateTitles.item(i).innerHTML < localStorage.getItem("datePickerMin") || dateTitles.item(i).innerHTML > localStorage.getItem("datePickerMax")) {
-        dateTitles.item(i).parentElement.setAttribute("hidden", "true");
+// Existerar inga inlägg? Då informerar vi användaren om detta.
+if (document.getElementsByTagName("li").length === 0) {
+    let h3 = document.createElement("h3");
+    h3.innerHTML = "Inga inlägg existerar. Testa att lägga till ett inlägg. :)";
+    document.getElementsByTagName("ul").item(0).append(h3);
+} else {
+    // Annars kontrollerar vi om ett inläggs datum ligger inom datumintervallet. Gör inlägget inte det gömmer vi inlägget.
+    let notes = document.getElementsByTagName("li");
+    for (let i = 0; i < notes.length; i++) {
+        let date = document.getElementsByClassName("note-form").item(i).children.item(1).value;
+        if (date < datePickerMin.value || date > datePickerMax.value) {
+            notes.item(i).setAttribute("hidden", "true");
+        }
+    }
+    // Är alla inlägg dolda?. Då informerar vi användaren om detta.
+    let hiddenNotes = Array.from(notes).filter((n) => {
+        return n.getAttribute("hidden");
+    });
+    if (hiddenNotes.length === notes.length) {
+        let h3 = document.createElement("h3");
+        h3.innerHTML = "Alla inlägg är dolda. Testa ett annat datumintervall. :)";
+        document.getElementsByTagName("ul").item(0).append(h3);
     }
 }
-
-/*let hiddenNotes = Array.from(dateTitles, (d) => {
-    return d.parentElement.getAttribute("hidden");
-});
-if (dateTitles.length == 0) {
-    let parent = document.getElementsByTagName("ul");
-    parent.item(0).append((document.createElement("h4").innerHTML = "Inga inlägg existerar. Testa att lägga till ett inlägg. :)"));
-    parent.item(0).style.font = "bold 22px Arial";
-    parent.item(0).style.color = "#333333";
-    parent.item(0).style.justifyContent = "center";
-    parent.item(0).style.alignItems = "center";
-    parent.item(0).style.display = "flex";
-} else if (
-    hiddenNotes.every((d) => {
-        return d;
-    })
-) {
-    let parent = document.getElementsByTagName("ul");
-    parent.item(0).append((document.createElement("h4").innerHTML = "Alla inlägg är dolda. Testa ett annat datum-intervall. :)"));
-    parent.item(0).style.font = "bold 22px Arial";
-    parent.item(0).style.color = "#333333";
-    parent.item(0).style.justifyContent = "center";
-    parent.item(0).style.alignItems = "center";
-    parent.item(0).style.display = "flex";
-}
-*/
 
 // När användaren klickar på "Nytt inlägg" visar vi vårt popup-fönster.
 document.getElementById("new-note-button").addEventListener("click", () => {
