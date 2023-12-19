@@ -62,7 +62,7 @@ for (let i = 0; i < dateTitles.length; i++) {
     }
 }
 
-let hiddenNotes = Array.from(dateTitles, (d) => {
+/*let hiddenNotes = Array.from(dateTitles, (d) => {
     return d.parentElement.getAttribute("hidden");
 });
 if (dateTitles.length == 0) {
@@ -86,26 +86,17 @@ if (dateTitles.length == 0) {
     parent.item(0).style.alignItems = "center";
     parent.item(0).style.display = "flex";
 }
+*/
 
-let newNoteButton = document.getElementById("new-note-button");
-let newNoteWindow = document.getElementById("new-note-window");
+// När användaren klickar på "Nytt inlägg" visar vi vårt popup-fönster.
+document.getElementById("new-note-button").addEventListener("click", () => {
+    document.getElementById("new-note-window").style.display = "block";
+});
 
-// Get the <span> element that closes the modal
-let closeButton = document.getElementById("close-button");
-
-// When the user clicks on the button, open the modal
-newNoteButton.onclick = function () {
-    newNoteWindow.style.display = "block";
-};
-
-// When the user clicks on <span> (x), close the modal
-closeButton.onclick = function () {
-    newNoteWindow.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == newNoteWindow) {
-        newNoteWindow.style.display = "none";
-    }
-};
+// Om användaren trycker bort fönstret så döljer vi det och återställer elementen till sina standardvärden.
+document.getElementById("close-button").addEventListener("click", () => {
+    document.getElementById("new-note-window").style.display = "none";
+    document.getElementById("new-note-title").value = "";
+    document.getElementById("new-note-date").value = "";
+    document.getElementById("new-note-text").value = "";
+});

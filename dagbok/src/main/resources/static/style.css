@@ -5,7 +5,7 @@ body {
 
 header {
     background-color: #1a1a1d;
-    padding: 1px 25px 0 25px;
+    padding: 0 25px;
     border-bottom: 3px solid #3438f5;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
@@ -19,13 +19,13 @@ header img {
 
 h1 {
     font: lighter 32px Futura;
-    color: white;
+    color: #ffffff;
     display: inline-block;
 }
 
 #date-clock {
     font: lighter 22px Futura;
-    color: white;
+    color: #ffffff;
     float: right;
     margin-top: 8px;
     padding: 7px;
@@ -36,8 +36,6 @@ h1 {
 main {
     display: flex;
     padding: 25px 0;
-    margin-right: 10px;
-    height: 75vh;
     justify-content: center;
     align-items: center;
 }
@@ -54,57 +52,18 @@ main {
 
 h2 {
     display: inline;
-    margin: 0;
-    padding: 0;
     font: bold 30px Arial;
     color: #333333;
 }
 
-#new-note-button {
-    background-color: #3438f5;
-    height: 40px;
-    width: 100%;
-    color: white;
-    border-radius: 30px;
-    margin-top: 5px;
-    font-size: large;
-    font-weight: bold;
-    border-style: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
-}
-
-#new-note-button:hover {
-    cursor: pointer;
-    background-color: #0105bb;
-}
-
-ul {
-    overflow-y: auto;
-    padding-left: 0px;
-    padding-right: 5px;
-    height: 75vh;
-}
-
-li {
-    background-color: #f6f6f6;
-    word-wrap: break-word;
-    color: #606062;
-    font: bold 15px Arial;
-    list-style-type: none;
-    padding: 10px 10px 10px 35px;
-    margin: 20px 0;
-    border-radius: 5px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-}
-
 .date-picker {
     background: #ffffff url(calendar.png) 93% 50% no-repeat;
-    color: black;
-    opacity: 1;
+    color: #333333;
+    font: bold small Arial;
     display: inline;
     float: right;
     margin-left: 10px;
-    padding: 7px;
+    padding: 7px 7px 4px 7px;
     border: 1px solid #606062;
     border-radius: 5px;
     width: 123px;
@@ -116,57 +75,86 @@ li {
     cursor: pointer;
 }
 
-.save-button {
-    background-color: #3438f5;
-    height: 20px;
-    width: 50%;
-    display: left;
-    border-bottom-left-radius: 10px;
-    border-top-left-radius: 10px;
-    color: white;
-    font-size: smaller;
-    font-weight: bold;
-    border-style: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+.date-picker::placeholder {
+    color: red;
+    opacity: 1;
 }
 
-.save-button:hover {
-    cursor: pointer;
-    background-color: #0105bb;
+ul {
+    overflow-y: auto;
+    padding: 0 10px 0 0;
+    height: 60vh;
 }
 
-.remove-button {
-    background-color: #ed141b;
-    height: 20px;
-    width: 50%;
-    float: right;
-    border-bottom-right-radius: 10px;
-    border-top-right-radius: 10px;
-    color: white;
-    font-size: smaller;
-    font-weight: bold;
-    border-style: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
-}
-
-.remove-button:hover {
-    cursor: pointer;
-    background-color: #b92424;
+li {
+    background-color: #f6f6f6;
+    color: #606062;
+    list-style-type: none;
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    border: rgba(0, 0, 0, 0.1) solid 1px;
 }
 
 h3 {
     margin: 0;
     padding: 0;
     display: inline;
+    font: bold 20px Arial;
 }
 
 .date-title {
     margin: 0;
     float: right;
+    font: bold 15px Arial;
+}
+
+.text {
+    font: bold 15px Arial;
+}
+
+.change-button {
+    background-color: #3438f5;
+    color: #ffffff;
+    height: 25px;
+    width: 50%;
+    display: left;
+    border-bottom-left-radius: 15px;
+    border-top-left-radius: 15px;
+    padding-top: 5px;
+    margin-top: 25px;
+    font: bold smaller Arial;
+    border-style: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.change-button:hover {
+    cursor: pointer;
+    background-color: #0105bb;
+}
+
+.remove-button {
+    background-color: #ed141b;
+    color: #ffffff;
+    height: 20px;
+    width: 50%;
+    float: right;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    padding-top: 5px;
+    margin-top: 25px;
+    font: bold smaller Arial;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.remove-button:hover {
+    background-color: #b92424;
 }
 
 ::-webkit-scrollbar {
-    cursor: auto;
     width: 10px;
 }
 
@@ -187,6 +175,23 @@ h3 {
     background: #e7e7e7;
 }
 
+.big-button {
+    background-color: #3438f5;
+    color: white;
+    height: 40px;
+    width: 100%;
+    border-radius: 30px;
+    margin-top: 25px;
+    font: bold larger Arial;
+    border-style: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.big-button:hover {
+    cursor: pointer;
+    background-color: #0105bb;
+}
+
 #new-note-window {
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
@@ -199,13 +204,10 @@ h3 {
 }
 
 #new-note-window-inner {
-    background-color: #fefefe;
-    margin: 15% auto;
+    background-color: #ffffff;
+    margin: 20vh auto;
     padding: 25px;
-    border: 1px solid #888;
     width: 50%;
-    background-color: white;
-    padding: 25px;
     border: 1px solid #606062;
     border-radius: 5px;
 }
@@ -213,75 +215,77 @@ h3 {
 #close-button {
     background-color: red;
     margin: 0;
-    padding: 0 7px;
+    padding: 0 15px 1px 15px;
     border-radius: 35px;
     color: #ffffff;
     float: right;
-    font: lighter 16px Arial;
+    font: bold 16px Arial;
     border-style: none;
 }
 
 #close-button:hover {
     background-color: rgb(154, 2, 2);
-    text-decoration: none;
     cursor: pointer;
-}
-
-#create-note-button {
-    background-color: #3438f5;
-    height: 40px;
-    width: 100%;
-    color: white;
-    border-radius: 30px;
-    margin-top: 5px;
-    font-size: large;
-    font-weight: bold;
-    border-style: none;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
 }
 
 #new-note-div {
     background-color: #f6f6f6;
-    word-wrap: break-word;
     color: #606062;
     font: bold 15px Arial;
     list-style-type: none;
-    padding: 10px 10px 10px 35px;
-    margin: 20px 0;
+    margin-top: 25px;
+    padding: 10px;
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-}
-
-#create-note-button:hover {
-    cursor: pointer;
-    background-color: #0105bb;
+    border: rgba(0, 0, 0, 0.1) solid 1px;
 }
 
 #new-note-title {
     background: #ffffff;
-    color: black;
-    opacity: 1;
-    display: inline;
-    float: left;
-    margin-left: 10px;
+    color: #333333;
+    font: bold small Arial;
     padding: 9px;
     border: 1px solid #606062;
     border-radius: 5px;
-    width: 123px;
+    width: 200px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    outline: none;
+    caret-color: #3438f5;
+}
+
+#new-note-title:hover {
+    border-color: #3438f5;
+    cursor: pointer;
+}
+
+#new-note-title:focus {
+    border-color: #3438f5;
+    cursor: auto;
 }
 
 #new-note-text {
     background: white;
-    color: black;
-    opacity: 1;
-    display: block;
-    margin-left: 10px;
-    padding: 10px;
+    color: #333333;
+    font: bold small Arial;
+    padding: 10px 10px;
     border: 1px solid #606062;
     border-radius: 5px;
     width: 100%;
-    height: 300px;
-    margin-top: 50px;
+    height: 150px;
+    margin-top: 25px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+    resize: none;
+    box-sizing: border-box;
+    outline: none;
+    caret-color: #3438f5;
+}
+
+#new-note-text:hover {
+    border-color: #3438f5;
+    cursor: pointer;
+}
+
+#new-note-text:focus {
+    border-color: #3438f5;
+    cursor: auto;
 }

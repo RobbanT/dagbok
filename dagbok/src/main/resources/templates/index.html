@@ -21,26 +21,28 @@
                 <input id="date-picker-min" class="date-picker" type="date" />
                 <ul>
                     <li th:each="note : ${notes}">
-                        <h3 th:text="${note.title}"></h3>
-                        <span th:text="${note.date}" class="date-title"></span>
-                        <p th:text="${note.text}"></p>
-                        <button class="save-button"><a>Spara</a></button>
-                        <button class="remove-button"><a th:href="@{delete(id=${note.id})}">Ta bort</a></button>
+                        <form method="post" th:action="@{/update-note}">
+                            <input th:value="${note.title}" id="new-note-title" name="title" type="text" placeholder="Ange titel..." maxlength="25" required />
+                            <input th:value="${note.date}" id="new-note-date" class="date-picker" name="date" type="date" min="2023-01-01" max="2025-01-01" required />
+                            <textarea th:text="${note.text}" id="new-note-text" name="text" placeholder="Ange text..." maxlength="800" required></textarea>
+                            <input name="id" th:value="${note.id}"></input>
+                            <button type="submit" class="change-button">Spara</button>
+                        </form>
+                        <a class="remove-button" th:href="@{delete(id=${note.id})}">Ta bort</a>
                     </li>
                 </ul>
-                <button id="new-note-button">Nytt inlägg</button>
+                <button id="new-note-button" class="big-button">Nytt inlägg</button>
             </div>
         </main>
         <div id="new-note-window">
             <div id="new-note-window-inner">
+                <h2>Skapa nytt inlägg</h2>
                 <button id="close-button">x</button>
-                <form method="post" th:action="@{/new-note}">
-                    <div id="new-note-div">
-                        <input id="new-note-title" name="title" type="text" placeholder="Ange titel..." />
-                        <input class="date-picker" name="date" type="date" />
-                        <textarea id="new-note-text" name="text" placeholder="Ange text..."></textarea>
-                    </div>
-                    <button id="create-note-button">Skapa inlägg</button>
+                <form id="new-note-div" method="post" th:action="@{/new-note}">
+                    <input id="new-note-title" name="title" type="text" placeholder="Ange titel..." maxlength="25" required />
+                    <input id="new-note-date" class="date-picker" name="date" type="date" min="2023-01-01" max="2025-01-01" required />
+                    <textarea id="new-note-text" name="text" placeholder="Ange text..." maxlength="800" required></textarea>
+                    <button id="create-note-button" class="big-button" type="submit">Skapa inlägg</button>
                 </form>
             </div>
         </div>

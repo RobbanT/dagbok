@@ -38,7 +38,7 @@ public class NoteController {
         return "redirect:/";
     }
 
-    @GetMapping("/update-note")
+    @PostMapping("/update-note")
     public String updateNote(@RequestParam("title") String title, @RequestParam("date") String date,
             @RequestParam("text") String text, @RequestParam("id") int id) {
         noteRepository.updateNote(title, date, text, id);
