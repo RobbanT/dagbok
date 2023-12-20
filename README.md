@@ -1,1 +1,2 @@
 # Dagbok
+![](dagbok.png)
